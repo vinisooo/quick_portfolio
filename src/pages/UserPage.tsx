@@ -3,6 +3,7 @@ import users from "@/app/data/data"
 import { Badge } from "@/components/ui/badge"
 import ProjectCard from "@/components/portfolio/ProjectCard"
 import { GitHubLogoIcon, InstagramLogoIcon } from "@radix-ui/react-icons"
+import Error from "next/error"
 
 export function BadgeDemo() {
   return <Badge>Badge</Badge>
@@ -15,8 +16,9 @@ interface UserPortfolioPropsType {
 export default function UserPortfolioPage ({ nickName }: UserPortfolioPropsType) {
   const user = users.find(user => user.nickName === nickName)
 
-  if(!user) return {notFound: true}
-
+  if(!user) {
+    return <Error statusCode={404}/>
+  }
   function getSocialMediaIcon(socialMedia: string) {
     switch (socialMedia) {
       case 'instagram':
@@ -30,7 +32,7 @@ export default function UserPortfolioPage ({ nickName }: UserPortfolioPropsType)
   }
   
   return (
-    <main className="px-10">
+    <main className="px-5">
       {/* user banner */}
       <div className="rounded-b-2xl bg-neutral-800 w-full h-[200px] max-w-7xl m-auto relative flex items-center justify-center">
         {/* user banner */}
