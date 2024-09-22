@@ -1,5 +1,5 @@
 import type ProjectType from "@/types/portfolio"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 
 interface ProjectCardPropsType {
   project: ProjectType
